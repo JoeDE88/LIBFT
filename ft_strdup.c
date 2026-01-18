@@ -11,13 +11,11 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
-#include <stdio.h>
 #include <stdlib.h>
 
 char	*ft_strdup(const char *s)
 {
-	unsigned char	*ptr;
+	char			*ptr;
 	int				len;
 
 	len = 0;
@@ -26,6 +24,11 @@ char	*ft_strdup(const char *s)
 	ptr = malloc((len + 1) * sizeof(char));
 	if (ptr == NULL)
 		return (NULL);
-	ft_memcpy((char *)ptr, s, len + 1);
-	return ((char *)ptr);
+	ft_strlcpy(ptr, s, len + 1);
+	return (ptr);
+}
+
+int	main(void)
+{
+	printf("%s\n", ft_strdup("Copying."));
 }
