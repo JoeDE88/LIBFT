@@ -27,8 +27,3 @@ char	*ft_strdup(const char *s)
 	ft_strlcpy(ptr, s, len + 1);
 	return (ptr);
 }
-
-int	main(void)
-{
-	printf("%s\n", ft_strdup("Copying."));
-}
