@@ -6,7 +6,7 @@
 /*   By: jdiaz-ec <jdiaz-ec@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 15:17:45 by jdiaz-ec          #+#    #+#             */
-/*   Updated: 2026/01/20 13:49:56 by jdiaz-ec         ###   ########.fr       */
+/*   Updated: 2026/01/20 16:05:40 by jdiaz-ec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	count_words(char const *s, char c)
 	int	i;
 	int	words;
 	int	is_word;
-	
+
 	i = 0;
 	words = 0;
 	while (s[i] != '\0')
@@ -65,7 +65,7 @@ static int	ft_fillword(char **arr, char const *s, char c)
 		{
 			if (ft_malloc(arr, j, len + 1))
 				return (1);
-			ft_strlcpy(arr[j], &s[i -len], len + 1);
+			ft_strlcpy(arr[j], &s[i - len], len + 1);
 		}
 		j++;
 	}
@@ -103,14 +103,4 @@ char	**ft_split(char const *s, char c)
 	if (ft_fillword(arr, s, c))
 		return (NULL);
 	return (arr);
-}
-
-int	main(void)
-{
-	char	str[] = "   This   is a small test    ";
-	char	c = ' ';
-	char	**arr = ft_split(str, c);
-
-	while (*arr)
-		printf("%s\n", *arr++);
 }
