@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdiaz-ec <jdiaz-ec@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/15 17:03:59 by jdiaz-ec          #+#    #+#             */
-/*   Updated: 2026/01/15 18:54:19 by jdiaz-ec         ###   ########.fr       */
+/*   Created: 2026/01/25 16:42:55 by jdiaz-ec          #+#    #+#             */
+/*   Updated: 2026/01/25 16:42:57 by jdiaz-ec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <bsd/string.h>
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
-{
-	size_t	i;
-	size_t	j;
+t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+{	
+	t_list	*newlist;
+	t_list	*newobj;
 
-	i = 0;
-	j = 0;
-	if (little[i] == '\0')
-		return ((char *)big);
-	while (i < len)
+	if (!lst || !f || !del)
+		return (NULL);
+	newlist = NULL;
+	while (lst != NULL)
 	{
-		while (big[i + j] == little[j] && little[j] != '\0')
-			j++;
-		if (little[j] == '\0')
-			return ((char *)&big[i]);
-		else
-			j = 0;
-		i++;
+		newobj = ft_lstnew(f(lst->content));
+		if (newobj == NULL)
+		{
+			ft_lstclear(&newlist, del);
+			return (NULL);
+		}
+		ft_lstadd_front(&newlist, newobj);
+		lst = lst->next;
 	}
-	return (0);
+	return (newlist);
 }

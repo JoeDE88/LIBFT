@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdiaz-ec <jdiaz-ec@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/15 17:03:59 by jdiaz-ec          #+#    #+#             */
-/*   Updated: 2026/01/15 18:54:19 by jdiaz-ec         ###   ########.fr       */
+/*   Created: 2026/01/19 12:36:16 by jdiaz-ec          #+#    #+#             */
+/*   Updated: 2026/01/19 13:38:11 by jdiaz-ec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <bsd/string.h>
+#include <stdlib.h>
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	i;
-	size_t	j;
+	char		*str;
+	size_t		len;
+	size_t		s1_len;
+	size_t		s2_len;
 
-	i = 0;
-	j = 0;
-	if (little[i] == '\0')
-		return ((char *)big);
-	while (i < len)
-	{
-		while (big[i + j] == little[j] && little[j] != '\0')
-			j++;
-		if (little[j] == '\0')
-			return ((char *)&big[i]);
-		else
-			j = 0;
-		i++;
-	}
-	return (0);
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	len = s1_len + s2_len;
+	if (len == 0)
+		return (NULL);
+	str = malloc((len + 1) * sizeof(char));
+	if (str == NULL)
+		return (NULL);
+	ft_memcpy(str, s1, s1_len);
+	ft_memcpy(str + s1_len, s2, s2_len);
+	str[len] = '\0';
+	return (str);
 }

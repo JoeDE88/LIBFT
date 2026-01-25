@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdiaz-ec <jdiaz-ec@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/15 17:03:59 by jdiaz-ec          #+#    #+#             */
-/*   Updated: 2026/01/15 18:54:19 by jdiaz-ec         ###   ########.fr       */
+/*   Created: 2026/01/23 17:51:27 by jdiaz-ec          #+#    #+#             */
+/*   Updated: 2026/01/23 17:51:31 by jdiaz-ec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
-#include <bsd/string.h>
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	size_t	i;
-	size_t	j;
+	t_list	*tmp;
 
-	i = 0;
-	j = 0;
-	if (little[i] == '\0')
-		return ((char *)big);
-	while (i < len)
+	if (!lst || !del)
+		return ;
+	while (*lst)
 	{
-		while (big[i + j] == little[j] && little[j] != '\0')
-			j++;
-		if (little[j] == '\0')
-			return ((char *)&big[i]);
-		else
-			j = 0;
-		i++;
+		tmp = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = tmp;
 	}
-	return (0);
+	free(*lst);
+	*lst = NULL;
 }
