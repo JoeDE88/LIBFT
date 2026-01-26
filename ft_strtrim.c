@@ -25,19 +25,15 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (!s1 || !set)
 		return (NULL);
 	len = ft_strlen(s1);
-	while (s1[i] != '\0')
-	{
-		if (ft_isinset(s1[i], set) == 1)
-			i++;
-		else
-			break ;
-	}
-	while (ft_isinset(s1[len - 1], set) == 1)
+	while (s1[i] != '\0' && ft_isinset(s1[i], set))
+		i++;
+	while (len > i && ft_isinset(s1[len - 1], set))
 		len--;
 	str = malloc((len - i + 1) * sizeof(char));
 	if (str == NULL)
 		return (NULL);
 	ft_memcpy(str, s1 + i, len - i);
+	str[len-i] = 0;
 	return (str);
 }
 

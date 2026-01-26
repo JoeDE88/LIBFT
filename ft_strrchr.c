@@ -18,7 +18,9 @@ char	*ft_strrchr(const char *s, int c)
 	size_t 		len;
 
 	len = ft_strlen(s);
-	while (len)
+	if (c == '\0')
+		return ((char *)&s[ft_strlen(s)]);
+	while (len > 0)
 	{
 		if (s[len] == c)
 			return ((char *)&s[len]);
@@ -28,9 +30,3 @@ char	*ft_strrchr(const char *s, int c)
 		return ((char *)&s[len]);
 	return (NULL);
 }
-/* 
-int	main(void)
-{
-	printf("%s\n", ft_strrchr("teste", 'e'));
-}
-  */
