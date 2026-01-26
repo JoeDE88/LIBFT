@@ -14,8 +14,8 @@
 #include <stdlib.h>
 #include "libft.h"
 
-int	ft_isdigit(int c);
-int	ft_isspace(int c);
+int			ft_isdigit(int c);
+static int	ft_isspace(int c);
 
 int	ft_atoi(const char *nptr)
 {
@@ -26,25 +26,24 @@ int	ft_atoi(const char *nptr)
 	sign = 1;
 	while (ft_isspace(*nptr) == 1)
 		nptr++;
-	if (*nptr == '-')
+	if (*nptr == '-' || *nptr == '+')
 	{
-		sign *= -1;
+		if (*nptr == '-')
+			sign *= -1;
 		nptr++;
 	}
-	while (ft_isdigit(*nptr) == 1)
+	while (ft_isdigit(*nptr))
 	{
 		nbr *= 10;
 		nbr += *nptr - 48;
 		nptr++;
 	}
-	if (sign < 0)
-		return (-nbr);
-	return (nbr);
+	return (nbr * sign);
 }
 
-int	ft_isspace(int c)
+static int	ft_isspace(int c)
 {
-	if (c == 32 || (c >= 8 && c <= 13))
+	if (c == 32 || (c >= 9 && c <= 13))
 		return (1);
 	return (0);
 }

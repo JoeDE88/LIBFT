@@ -1,5 +1,5 @@
 #include "libft.h"
-
+#include <bsd/string.h>
 
 void	*(foo)(void *content)
 {
@@ -41,4 +41,12 @@ int	main(void)
 		printf("new num: %d\n", *(int *)newlist->content);
 		newlist = newlist->next;
 	} */
+	char s1[] = "algo";
+	char s2[] = "otro";
+	char *p2;
+	char	*ptr;
+
+	p2 = NULL;
+	ptr = ft_strjoin(s1, p2);
+	free(ptr);
 }
