@@ -1,46 +1,32 @@
 #include "libft.h"
 #include <bsd/string.h>
+#include <limits.h>
 
-void	*(foo)(void *content)
-{
-	int	*n = (int *)content;
-	(*n) *= 10;
-	return (content); 
-}
+#define N 20
 
 int	main(void)
 {
 	/* t_list	*list;
 	t_list	*list2;
-	t_list	*newlist;
+	t_list	*node1;
 	int	*a = malloc(sizeof(int));
-	int	*b = malloc(sizeof(int));
-	int	*c = malloc(sizeof(int));
-	int	*d = malloc(sizeof(int));
 	int	*e = malloc(sizeof(int));
 	
 	*a = 45;
-	*b = 2;
-	*c = 98;
-	*d = 10;
 	*e = 6;
 	list = ft_lstnew(a);
-	ft_lstadd_front(&list, ft_lstnew(b));
-	ft_lstadd_front(&list, ft_lstnew(c));
-	ft_lstadd_front(&list, ft_lstnew(d));
-	ft_lstadd_front(&list, ft_lstnew(e));
-	list2 = list;
-	while (list2 != NULL)
+	node1 = ft_lstnew(e);
+	list2 = NULL;
+	ft_lstadd_back(&list2, node1); */
+	char	dest[N] = "One19sizedstring!!!";
+	char	src[20] = "HelloEverything";
+
+	ft_strlcat(dest, src, 40);
+	int i = 0;
+	printf("\n\n");
+	while (dest[i] != '\0')
 	{
-		printf("num: %d\n", *(int *)list2->content);
-		list2 = list2->next;
+		printf("i: %d ---> %c\n", i, dest[i]);
+		i++;
 	}
-	newlist = ft_lstmap(list, foo, free);
-	while (newlist != NULL)
-	{
-		printf("new num: %d\n", *(int *)newlist->content);
-		newlist = newlist->next;
-	} */
-	char	*ptr = ft_strrchr("teste", '\0');
-	printf("%lu\n", ft_strlen(ptr));
 }

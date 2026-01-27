@@ -3,8 +3,6 @@ SRC = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft
 
 OBJS := $(SRC:%.c=%.o)
 
-BONUS = all  
-
 NAME = libft.a
 
 CC = gcc
@@ -20,6 +18,8 @@ RM = rm -f
 ARNAME = ar rcs $(NAME)
 
 RANNAME = ranlib $(NAME)
+
+bonus: all
 
 all: $(NAME)
 

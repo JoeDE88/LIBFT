@@ -37,7 +37,7 @@ static int	ft_countdigits(long n)
 		n *= -1;
 		digits++;
 	}
-	else if (n == 0)
+	if (n == 0)
 		digits++;
 	while (n > 0)
 	{
@@ -70,7 +70,7 @@ char	*ft_itoa(int n)
 	if (nbr < 0)
 	{
 		nbr *= -1;
-		str = ft_malloc(digits + 1);
+		str = ft_malloc(digits);
 		is_negative = 1;
 	}
 	else
