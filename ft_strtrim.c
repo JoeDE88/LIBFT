@@ -33,7 +33,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (str == NULL)
 		return (NULL);
 	ft_memcpy(str, s1 + i, len - i);
-	str[len - i] = 0;
+	str[len - i] = '\0';
 	return (str);
 }
 
