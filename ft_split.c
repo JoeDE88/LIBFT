@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 static int	count_words(char const *s, char c);
 static int	ft_fillword(char **arr, char const *s, char c);
