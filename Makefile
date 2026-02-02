@@ -39,7 +39,3 @@ fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
-
-everything: $(OBJS)
-	$(ARNAME) $(OBJS)
-	$(RANNAME)

@@ -11,14 +11,21 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <limits.h>
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	unsigned char	*ptr;
+	size_t			total;
 
-	ptr = malloc(nmemb * size);
+	if (nmemb == 0 || size == 0)
+		return (malloc(1));
+	if (nmemb > __SIZE_MAX__ / size)
+		return (NULL);
+	total = nmemb * size;
+	ptr = malloc(total);
 	if (!ptr)
 		return (NULL);
-	ft_bzero(ptr, nmemb * size);
+	ft_bzero(ptr, total);
 	return (ptr);
 }
