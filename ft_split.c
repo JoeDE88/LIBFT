@@ -6,17 +6,17 @@
 /*   By: jdiaz-ec <jdiaz-ec@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 15:17:45 by jdiaz-ec          #+#    #+#             */
-/*   Updated: 2026/01/20 16:05:40 by jdiaz-ec         ###   ########.fr       */
+/*   Updated: 2026/02/02 11:21:23 by jdiaz-ec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	count_words(char const *s, char c);
+static int	ft_count_words(char const *s, char c);
 static int	ft_fillword(char **arr, char const *s, char c);
 static int	ft_malloc(char **arr, int n, size_t buffer);
 
-static int	count_words(char const *s, char c)
+static int	ft_count_words(char const *s, char c)
 {
 	int	i;
 	int	words;
@@ -94,7 +94,7 @@ char	**ft_split(char const *s, char c)
 
 	if (s == NULL)
 		return (NULL);
-	words = count_words(s, c);
+	words = ft_count_words(s, c);
 	arr = malloc((words + 1) * sizeof(char *));
 	if (arr == NULL)
 		return (NULL);
